@@ -44,4 +44,15 @@ public class CompanyServiceImpl implements  CompanyService{
         Optional<Company> company = companyRepository.findById(id);
         return company;
     }
+
+   public List<Company> getCompanyDetailsBySector(String sector){
+        List<Company> ans = companyRepository.findAllBySector(sector);
+        return ans;
+   }
+
+    @Override
+    public List<Company> getCompanySectorPrice(String frm_date, String to_date, String sector) {
+        List<Company> ans = companyRepository.findAllBySectorByDate(frm_date,to_date,sector);
+        return ans;
+    }
 }

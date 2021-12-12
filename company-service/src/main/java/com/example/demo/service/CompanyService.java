@@ -11,4 +11,6 @@ public interface CompanyService {
     public Company createCompany(Company customer);
     public List<Company>  getMatchingCompanies(String pattern) throws Exception;
     public Optional<Company> getCompanyDetails(Long id);
+    public List<Company> getCompanyDetailsBySector(String sector);
+    public List<Company> getCompanySectorPrice(String frm_date, String to_date, String sector);
 }

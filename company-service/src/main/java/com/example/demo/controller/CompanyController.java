@@ -18,6 +18,10 @@ public class CompanyController {
     @Autowired
     public CompanyService companyService;
 
+    @GetMapping("/status")
+    public String getStatus(){
+        return "Hello i am up";
+    }
     @PostMapping("/create")
     public ResponseEntity<?> createCompany(@RequestBody Company company){
         companyService.createCompany(company);
@@ -34,4 +38,14 @@ public class CompanyController {
     public ResponseEntity<List<Company>> getPatternMatching(@PathVariable String pattern) throws Exception {
         return ResponseEntity.ok(companyService.getMatchingCompanies(pattern));
     }
+
+    @GetMapping("/searchBySectorId/{sector}")
+    public ResponseEntity<?> getCompanyBySectorId(@PathVariable String sector){
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getCompanyDetailsBySector(sector));
+    }
+    @GetMapping("/sectorPrice/{frm_date}/{to_date}/{sector_id}")
+    public ResponseEntity<?> getSectorPrice(@PathVariable("frm_date") String frm_date,@PathVariable("to_date") String to_date,@PathVariable("sector_id") String sector){
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getCompanySectorPrice(frm_date,to_date,sector));
+    }
+
 }
