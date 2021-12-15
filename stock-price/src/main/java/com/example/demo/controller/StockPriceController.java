@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.StockPrice;
+import com.example.demo.request.StockPriceObj;
 import com.example.demo.service.StockPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -29,8 +30,18 @@ public class StockPriceController {
         return ResponseEntity.status(HttpStatus.OK).body("stcok-price-ws is up and running at"+environment.getProperty("local.server.port"));
     }
 
-    @GetMapping("/get-rec/{frm_date}/{to_date}/{id}")
-    public ResponseEntity<?> getRecBydate(@PathVariable String frm_date,@PathVariable String to_date,@PathVariable Long id){
+    @PostMapping("/get-rec/")
+    public ResponseEntity<?> getRecBydate(@RequestBody StockPriceObj obj){
+        String frm_date = obj.getFrm_date();
+        String to_date = obj.getTo_date();
+        Long id = obj.getId();
         return ResponseEntity.status(HttpStatus.OK).body(stockPriceService.getStockPriceByInterval(frm_date,to_date,id));
     }
+
+    @PostMapping("/getAll/")
+    public ResponseEntity<?> getAll(@RequestBody StockPriceObj obj) throws Exception{
+        Long id = obj.getId();
+        return ResponseEntity.status(HttpStatus.OK).body(stockPriceService.getAllStock(id, obj.getCompany_code()));
+    }
 }
+

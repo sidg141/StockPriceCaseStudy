@@ -16,9 +16,10 @@ import javax.persistence.*;
 @Setter
 public class StockPrice {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "company_code")
-    private String company_code;
+    @Column(name = "code")
+    private String code;
     @Column(name = "se_name")
     private String se_name;
     @Column(name = "price")

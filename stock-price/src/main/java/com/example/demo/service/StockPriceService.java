@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface StockPriceService {
     public List<StockPrice> getStockPriceByInterval(String frm_date, String to_date, Long id);
+    public List<StockPrice> getAllStock(Long id,String code) throws Exception;
 }
