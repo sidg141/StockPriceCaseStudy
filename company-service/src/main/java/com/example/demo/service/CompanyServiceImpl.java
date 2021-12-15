@@ -55,4 +55,9 @@ public class CompanyServiceImpl implements  CompanyService{
         List<Company> ans = companyRepository.findAllBySectorByDate(frm_date,to_date,sector);
         return ans;
     }
+
+    @Override
+    public List<Company> getCompanyDetailsBySe(String se) {
+        return companyRepository.findAllBySe(se);
+    }
 }

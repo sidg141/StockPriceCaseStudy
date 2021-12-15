@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Company;
 import com.example.demo.service.CompanyService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +47,11 @@ public class CompanyController {
     @GetMapping("/sectorPrice/{frm_date}/{to_date}/{sector_id}")
     public ResponseEntity<?> getSectorPrice(@PathVariable("frm_date") String frm_date,@PathVariable("to_date") String to_date,@PathVariable("sector_id") String sector){
         return ResponseEntity.status(HttpStatus.OK).body(companyService.getCompanySectorPrice(frm_date,to_date,sector));
+    }
+
+    @GetMapping("/searchBySe/{se}")
+    public ResponseEntity<?> getCompanyDetailsBySe(@PathVariable("se")  String se){
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getCompanyDetailsBySe(se));
     }
 
 }

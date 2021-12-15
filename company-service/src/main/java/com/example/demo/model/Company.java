@@ -23,8 +23,8 @@ public class Company {
     private String sector;
     @Column(name = "is_listed_in_stock")
     private Boolean is_listed_in_stock;
-    @Column(name = "stock_code")
-    private String stock_code;
+    @Column(name = "se")
+    private String se;
 
     public Company() {
     }
@@ -55,7 +55,7 @@ public class Company {
                 ", company_name='" + company_name + '\'' +
                 ", sector='" + sector + '\'' +
                 ", is_listed_in_stock=" + is_listed_in_stock +
-                ", stock_code='" + stock_code + '\'' +
+                ", stock_code='" + se + '\'' +
                 '}';
     }
 
@@ -71,8 +71,8 @@ public class Company {
         this.is_listed_in_stock = is_listed_in_stock;
     }
 
-    public void setStock_code(String stock_code) {
-        this.stock_code = stock_code;
+    public void setSe(String se) {
+        this.se = se;
     }
 
     public String getAbout() {
@@ -95,11 +95,11 @@ public class Company {
         return is_listed_in_stock;
     }
 
-    public String getStock_code() {
-        return stock_code;
+    public String getSe() {
+        return se;
     }
 
-    public Company(Long id, String ceo, String about, String directors, String company_name, String sector, Boolean is_listed_in_stock, String stock_code) {
+    public Company(Long id, String ceo, String about, String directors, String company_name, String sector, Boolean is_listed_in_stock, String se) {
         this.id = id;
         this.ceo = ceo;
         this.about = about;
@@ -107,7 +107,7 @@ public class Company {
         this.company_name = company_name;
         this.sector = sector;
         this.is_listed_in_stock = is_listed_in_stock;
-        this.stock_code = stock_code;
+        this.se = se;
     }
 
 

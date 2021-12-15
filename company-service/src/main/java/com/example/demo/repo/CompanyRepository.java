@@ -16,6 +16,8 @@ public interface CompanyRepository extends CrudRepository<Company, Long> {
     List<Company> findMatchPatternCompanies(@Param("pattern") String pattern);
     @Query
     List<Company> findAllBySector(String sector);
-    @Query(value="select * from company where ")
+    @Query(value="select * from company where date>= :frm_date and date<=:to_date and sector = :sector",nativeQuery = true)
     List<Company> findAllBySectorByDate(String frm_date, String to_date, String sector);
+    @Query
+    List<Company> findAllBySe(String se);
 }
